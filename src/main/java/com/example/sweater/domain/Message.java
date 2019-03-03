@@ -2,7 +2,6 @@ package com.example.sweater.domain;
 
 import javax.persistence.*;
 
-
 @Entity
 public class Message {
     @Id
@@ -11,9 +10,10 @@ public class Message {
 
     private String text;
     private String tag;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
-    public User author;
+    private User author;
 
     public Message() {
     }
@@ -24,8 +24,8 @@ public class Message {
         this.tag = tag;
     }
 
-    public String getAuthorName(){
-        return author!=null? author.getUsername(): "<none>";
+    public String getAuthorName() {
+        return author != null ? author.getUsername() : "<none>";
     }
 
     public User getAuthor() {
